@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DSP Image Filtering - Results</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Digital Signal Processing - Compression Results</h1>
+    <h2>Original Image:</h2>
+    <img src="{{ url_for('uploaded_file', filename='image_upload.png') }}" alt="Original Image" style="max-width: 100%; height: auto;">
+    
+    <h2>Compressed Image:</h2>
+    <img id="compression-output" src="{{ url_for('output_file', filename='compressed_image.png') }}" alt="Compressed Image" style="max-width: 100%; height: auto;">
+
+    <h2>Adjust Compression:</h2>
+    <input type="range" id="compression-slider" min="0.05" max="0.5" step="0.05" value="0.1" onchange="adjust('compression', this.value)">
+    <p>Cutoff Ratio: <span id="compression-value">0.1</span></p>
+
+    <script>
+        function adjust(feature, param) {
+            const filename = "image_upload.png";  // Fixed filename
+            document.getElementById("compression-value").textContent = param;
+
+            $.ajax({
+                url: '/adjust',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ feature: feature, param: param }),
+                success: function(response) {
+                    // Update the displayed compressed image with a timestamp to avoid caching
+                    document.getElementById("compression-output").src = "/outputs/" + response.output + "?t=" + new Date().getTime();
+                },
+                error: function() {
+                    alert('Error processing the adjustment!');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
