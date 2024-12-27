@@ -1,38 +1,34 @@
-Here’s an explanation of the provided code along with a guide to display the `xrayDemo.mp4` video in the `README.md` file on GitHub:
+# X-ray Image Enhancement Tool
 
----
+This Python application leverages **Digital Signal Processing (DSP)** techniques to enhance X-ray images by applying customizable digital filters. It is designed as an interactive tool for both practical image enhancement and educational exploration of DSP principles.
 
-### **Code Explanation**
+## Key Features
 
-The code is a Python application built using `Tkinter` for graphical user interface (GUI) and other libraries for image processing and plotting. The application is designed to enhance X-ray images using adjustable parameters. Below is a breakdown of its components:
+- **Digital Signal Filtering**:
+  - Apply **Gaussian Blur** for noise reduction (spatial domain filtering).
+  - Use **IIR Filters** (low-pass and high-pass) for frequency-based signal enhancement.
+- **Interactive DSP Controls**:
+  - Adjust filter parameters in real time and observe the effect on the image.
+  - Understand the relationship between filter coefficients and frequency response.
+- **Frequency Response Visualization**:
+  - Plot low-pass and high-pass filter responses to learn how they influence the image.
 
-#### **1. Importing Libraries**
-The code uses:
-- **`tkinter` and `ttk`**: For creating the GUI.
-- **`cv2` (OpenCV)**: For image loading, processing, and noise reduction.
-- **`numpy`**: For efficient array manipulations.
-- **`scipy.signal`**: To apply IIR filters for frequency domain processing.
-- **`matplotlib`**: To plot frequency responses of filters.
-- **`PIL` (Pillow)**: For handling and resizing images.
+## How It Works
 
-#### **2. Class `XRayImageProcessor`**
-The main class encapsulates the GUI logic and image processing.
+1. **Upload an X-ray Image**: Select an X-ray image file to process.
+2. **Adjust Noise Reduction**: Modify the Gaussian blur kernel size to remove unwanted high-frequency noise.
+3. **Enhance Details**: Use the low-pass and high-pass filter sliders to emphasize or suppress specific frequency components.
+4. **Visualize Frequency Response**: Observe the impact of filter coefficients on the signal's frequency behavior in real time.
 
-- **Initialization (`__init__`)**:
-  - Configures the main window's layout, scrollable frame, and styling.
-  - Calls `create_ui_components` to set up UI elements like buttons, labels, and sliders.
+## Demo
 
-- **UI Components**:
-  - **Image upload**: A button allows users to load X-ray images.
-  - **Image display**: Original and enhanced images are shown side-by-side in the GUI.
-  - **Filter controls**: Adjustable sliders control noise reduction and filter coefficients (low-pass and high-pass filters).
-  - **Frequency response plot**: Uses `matplotlib` to visualize filter behavior.
+![X-ray Image Enhancement Demo](xrayDemo.mp4)
 
-- **Event Handlers**:
-  - **`upload_image`**: Opens a file dialog to load an X-ray image, normalizes it, and initializes the processing.
-  - **`update_filters`**: Applies noise reduction and IIR filters based on slider values and updates the UI.
-  - **`plot_frequency_response`**: Visualizes the frequency response of the filters.
+## Why DSP?
 
-- **Helper Functions**:
-  - **`apply_iir_filter`**: Applies an IIR filter along rows and columns of the image.
-  - **`create_parameter_slider`**: Generates sliders for each adjustable parameter with tooltips for guidance.
+Digital Signal Processing (DSP) is a cornerstone of modern signal analysis and enhancement. This application showcases DSP principles applied to 2D signals (images), emphasizing how filtering techniques can:
+- Reduce noise while preserving signal fidelity.
+- Enhance specific details, such as edges, using high-pass filtering.
+- Smooth large structures by attenuating high frequencies with low-pass filtering.
+
+Explore the power of DSP with this interactive tool!
