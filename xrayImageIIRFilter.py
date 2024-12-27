@@ -132,7 +132,7 @@ class XRayImageProcessor:
             }
         ]
 
-        # Create sliders for each parameter
+        # Create sliders for each parameters
         for param in self.filter_parameters:
             self.create_parameter_slider(
                 filter_controls_frame, 
