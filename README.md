@@ -22,7 +22,7 @@ This Python application leverages **Digital Signal Processing (DSP)** techniques
 
 ## Demo
 
-![X-ray Image Enhancement Demo](xrayDemo.mp4)
+![X-ray Image Enhancement Demo](xrayDemo.gif)
 
 ## Why DSP?
 
